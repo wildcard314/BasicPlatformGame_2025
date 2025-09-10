@@ -3,29 +3,79 @@ using UnityEngine;
 public class PlayerControlller : MonoBehaviour
 {
     public float speed;
-    
+    public float jumpforce;
+    private float inputHorizontal;
+    private float inputVertical;
+    private int maxJumps;
+    private int jumps;
+    Rigidbody2D rb;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Hello From player Controller :3");
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        maxJumps = 1;
+        jumps = maxJumps;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("loop de loop");
+        horizontalMovement();
+        jump();
     }
+       
 
-
-    private void horizontalMovement()
+    public void flipPlayerSprite(float inputHorizontal)
     {
+        //this is how we will make the player face the direction they are moveing
+
+        if(inputHorizontal > 0)
+        {
+            transform.eulerAngles = new Vector3 (0, 0, 0);
+        }
+        else if (inputHorizontal < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
 
 
     }
-    // this is a test, if it works yippiee :3
-    //dont judge me TODD
+
+    public void jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && jumps <= maxJumps)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpforce);
+            jumps++;
+        }
+    }
+
+    public void horizontalMovement()
+    {
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+
+        rb.linearVelocity = new Vector2(speed * inputHorizontal, rb.linearVelocity.y);
+        flipPlayerSprite(inputHorizontal);
+
+    }
+
+
+    //collions
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //collision will contain information about the object that the plater collided with
+        //Debug.Log(collision.gameObject);
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            jumps = maxJumps;
+        }
+
+    }
+
+
+
 }
