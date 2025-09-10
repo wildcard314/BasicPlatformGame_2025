@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PlayerControlller : MonoBehaviour
 {
+    public float speed;
+    
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +20,12 @@ public class PlayerControlller : MonoBehaviour
         Debug.Log("loop de loop");
     }
 
+
+    private void horizontalMovement()
+    {
+
+
+    }
     // this is a test, if it works yippiee :3
     //dont judge me TODD
 }
