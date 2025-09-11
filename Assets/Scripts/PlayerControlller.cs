@@ -76,6 +76,15 @@ public class PlayerControlller : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Collectable"))
+        {
+            string fromPinkCollectable = collision.gameObject.GetComponent<PinkCollectableTriangle>().getTestString();
+            Debug.Log(fromPinkCollectable);
+        }
+    }
+
 
 
 }

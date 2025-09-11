@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 569970272}
   - component: {fileID: 569970275}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: PinkCollectableTriangle
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,9 +452,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 569970270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133ce02d4330bd4459162ff9a39125c1, type: 3}
+  m_Script: {fileID: 11500000, guid: d1def2ab88617f44a80ced4a44e6ad4c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  m_EditorClassIdentifier: Assembly-CSharp::PinkCollectableTriangle
 --- !u!1001 &571190850
 PrefabInstance:
   m_ObjectHideFlags: 0
