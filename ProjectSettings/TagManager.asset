@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Collectable
+  - DoubleJump
+  - PlatformStart
+  - PlatformEnd
   layers:
   - Default
   - TransparentFX

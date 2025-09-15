@@ -17,7 +17,7 @@ public class PlayerControlller : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         maxJumps = 1;
-        jumps = maxJumps;
+        jumps = 1;
         
     }
 
@@ -71,17 +71,18 @@ public class PlayerControlller : MonoBehaviour
         //Debug.Log(collision.gameObject);
         if(collision.gameObject.CompareTag("Ground"))
         {
-            jumps = maxJumps;
+            jumps = 1;
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Collectable"))
+        //double jump
+        if(collision.gameObject.CompareTag("DoubleJump"))
         {
-            string fromPinkCollectable = collision.gameObject.GetComponent<PinkCollectableTriangle>().getTestString();
-            Debug.Log(fromPinkCollectable);
+            maxJumps = 2;
+           
         }
     }
 
