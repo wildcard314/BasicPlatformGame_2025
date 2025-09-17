@@ -9,6 +9,7 @@ TagManager:
   - DoubleJump
   - PlatformStart
   - PlatformEnd
+  - Weight
   layers:
   - Default
   - TransparentFX
