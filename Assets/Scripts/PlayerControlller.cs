@@ -10,6 +10,8 @@ public class PlayerControlller : MonoBehaviour
     private int jumps;
     Rigidbody2D rb;
 
+    public GameObject doubleJumpHatLoctaion;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -81,9 +83,17 @@ public class PlayerControlller : MonoBehaviour
         //double jump
         if(collision.gameObject.CompareTag("DoubleJump"))
         {
+            GameObject hat = collision.gameObject;
+            equipDoubleJumpHat(hat);
             maxJumps = 2;
            
         }
+    }
+
+    private void equipDoubleJumpHat(GameObject hat)
+    {
+        hat.transform.position = doubleJumpHatLoctaion.transform.position;
+        hat.gameObject.transform.SetParent(gameObject.transform);
     }
 
 

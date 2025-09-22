@@ -40,20 +40,17 @@ public class PlatformController : MonoBehaviour
 
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("PlatformStart"))
+        if (collision.gameObject.CompareTag("PlatformStart"))
         {
             moveLeft = false;
         }
 
-        if(collision.gameObject.CompareTag("PlatformEnd"))
+        if (collision.gameObject.CompareTag("PlatformEnd"))
         {
             moveLeft = true;
         }
-
-
     }
 
 }
