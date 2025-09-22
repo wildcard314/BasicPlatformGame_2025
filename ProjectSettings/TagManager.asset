@@ -10,6 +10,8 @@ TagManager:
   - PlatformStart
   - PlatformEnd
   - Weight
+  - Gun
+  - oob
   layers:
   - Default
   - TransparentFX

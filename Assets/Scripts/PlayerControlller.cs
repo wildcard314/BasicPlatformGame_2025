@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControlller : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class PlayerControlller : MonoBehaviour
     Rigidbody2D rb;
 
     public GameObject doubleJumpHatLoctaion;
-
+    public GameObject gunLocation;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,9 +73,13 @@ public class PlayerControlller : MonoBehaviour
     {
         //collision will contain information about the object that the plater collided with
         //Debug.Log(collision.gameObject);
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             jumps = 1;
+        }
+        else if (collision.gameObject.CompareTag("oob")) 
+        {
+            SceneManager.LoadScene("SampleScene");
         }
 
     }
@@ -88,6 +94,13 @@ public class PlayerControlller : MonoBehaviour
             maxJumps = 2;
            
         }
+        // gun
+        if(collision.gameObject.CompareTag("Gun"))
+        {   
+            GameObject gun = collision.gameObject;
+            equipGun(gun);
+        }
+
     }
 
     private void equipDoubleJumpHat(GameObject hat)
@@ -96,6 +109,10 @@ public class PlayerControlller : MonoBehaviour
         hat.gameObject.transform.SetParent(gameObject.transform);
     }
 
-
+    private void equipGun(GameObject gun)
+    {
+        gun.transform.position = gunLocation.transform.position;
+        gun.gameObject.transform.SetParent(gameObject.transform);
+    }
 
 }
