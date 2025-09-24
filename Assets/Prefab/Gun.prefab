@@ -221,6 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4807394785323407255}
   - component: {fileID: 7447820397372677641}
+  - component: {fileID: 292010823517581491}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Gun
@@ -292,3 +293,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9735427, y: 0.62959844}
   m_EdgeRadius: 0
+--- !u!114 &292010823517581491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5775495222430784363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14bab32f73f5fe641b16543ca3505c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunController
+  bullet: {fileID: 1940323393853524778, guid: e91500f70a38d0c4faf7d435d73343ec, type: 3}
+  bulletSpawnLocation: {fileID: 1746742175067212326}

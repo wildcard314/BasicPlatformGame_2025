@@ -9,6 +9,7 @@ public class CollectableController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        setRandomSpeed();
     }
 
     // Update is called once per frame
@@ -20,6 +21,16 @@ public class CollectableController : MonoBehaviour
     private void moveLeft()
     {
         rb.linearVelocity = new Vector2(speed * -1, 0);
+    }
+
+    private void setRandomSpeed()
+    {
+        float minSpeed = 5;
+        float maxspeed = 8;
+
+        speed = Random.Range(minSpeed, maxspeed);
+
+
     }
 
 }
