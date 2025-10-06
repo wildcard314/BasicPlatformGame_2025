@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerControlller : MonoBehaviour
 {
@@ -15,15 +16,27 @@ public class PlayerControlller : MonoBehaviour
     public GameObject doubleJumpHatLoctaion;
     public GameObject gunLocation;
 
-    public GunController gunController;
+    private GunController gunControllerScript;
+
+    public GameObject scoreManager;
+    private ScoreManagerGui scoreManagerScript;
+
+    private int playerScore;
+    private int HighScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
+        scoreManagerScript = scoreManager.GetComponent<ScoreManagerGui>();
+        gunControllerScript = GetComponent<GunController>();
+
         maxJumps = 1;
         jumps = 1;
+
+        playerScore = 0;
+        HighScore = 0;
         
     }
 
@@ -102,6 +115,16 @@ public class PlayerControlller : MonoBehaviour
             GameObject gun = collision.gameObject;
             equipGun(gun);
         }
+        if(collision.gameObject.CompareTag("Collectable"))
+        {
+            GameObject collectable = collision.gameObject;
+            CollectableData cdScript = collectable.GetComponent<CollectableData>();
+            int valueOfCollectable = cdScript.getValue();
+            changePlayerScore(valueOfCollectable);
+            cdScript.destroyCollectable();
+            scoreManagerScript.setGUIcurScore();
+
+        }
 
     }
 
@@ -115,6 +138,30 @@ public class PlayerControlller : MonoBehaviour
     {
         gun.transform.position = gunLocation.transform.position;
         gun.gameObject.transform.SetParent(gameObject.transform);
+    }
+
+    public int getPlayerScore()
+    {
+        return playerScore;
+    }
+    public void setPlayerScore(int score)
+    {
+        playerScore = score;
+    }
+    public void changePlayerScore(int value)
+    {
+        playerScore += value;
+        Debug.Log("SCORE: " +  playerScore);
+    }
+
+    public void setPlayerHighSCore(int s)
+    {
+        HighScore = s;
+    }
+
+    public int getPlayerHighSCore()
+    {
+        return HighScore;
     }
 
 }
